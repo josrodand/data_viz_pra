@@ -17,7 +17,7 @@ class PlotBuilder:
         df_agg = self.data_pipeline.get_agg_data(country, column, use_gender = False)
 
         fig = px.bar(
-            df_agg,
+            df_agg.sort_values('count_values', ascending=False).reset_index(drop=True),
             x=column,
             y="count_values",
             color=column,
